@@ -1,0 +1,34 @@
+import socket
+import tkinter as tk
+
+def alert other():
+  alert message = "Danger!!!"
+  for client in clients:
+    client.send(alert_message.encode())
+
+def receive_messages(client, address):
+  while True:
+    message = client.recv(1024).decode()
+    if message == "Danger!!!":
+      print("Received alert from", address)
+
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.bind(("localhost", 12345))
+server.listen(5)
+clients = []
+
+app = tk.Tk()
+app.title("Emergency Button")
+
+button = tk.Button("Danger", command=alert_others)
+button.pack()
+
+while True:
+  client, address = server.accept()
+  print("Connected to", address)
+  client.send("Connected to the server".encode()
+  client.append(client)
+  client.start_new_thread(receive messages, (client address))
+
+app.mainloop()
+    
